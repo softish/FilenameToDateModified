@@ -36,4 +36,14 @@ public class DateModifiedUpdaterTest {
         // then
         assertEquals(expectedDate.getTimeInMillis(), actualDate.getTime());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void unsupportedDateFormat() {
+        // given
+        // HHmmss-yyMMdd
+        String dateFromFileName = "164855-091012";
+        Date expectedDate = new Date();
+        // when
+        DateModifiedUpdater.createDate(dateFromFileName);
+    }
 }
